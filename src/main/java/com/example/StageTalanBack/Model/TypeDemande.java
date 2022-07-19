@@ -8,17 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 
-
-
 @Entity
-@Table(name = "demande")
-public class Demande {
+@Table(name = "TypeDemande")
+public class TypeDemande {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	
-	@Column(name = "typeDemande")
-	private String typeDemande;
-
+	private long id; 
+    
+    @Column(name = "nomTypeDemande")
+	private String nomTypeDemande; 
     
 }
