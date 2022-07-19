@@ -24,7 +24,7 @@ import com.example.StageTalanBack.Service.EmployeeService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/employee/")
 public class EmployeeController {
 
 	
@@ -33,14 +33,14 @@ public class EmployeeController {
 	
 	// get all employees
 	@GetMapping("/employees")
-	public List<Employee> getAllAlertes()
+	public List<Employee> getAllEmployee()
 	{
 		return employeeService.ListEmployee();
 	}		
 	
 	// create employee rest api
 	@PostMapping("/employees")
-	public Employee creerAlerte( @RequestBody Employee employee)
+	public Employee creerEmployee( @RequestBody Employee employee)
 	{
 		employeeService.saveEmployee(employee);
 		return employee;
@@ -48,14 +48,14 @@ public class EmployeeController {
 	
 	// get employee by id rest api
 	@GetMapping("/employees/{id}")
-	public Optional<Employee> findAlerte(@PathVariable (value="id") String id){
+	public Optional<Employee> findEmployee(@PathVariable (value="id") String id){
 		return employeeService.findEmployee(Long.parseLong(id));
 	}
 	
 	// update employee rest api
 	
 	@PutMapping("/employees/{id}")
-	public String UpdateAlerte( @RequestBody Employee employee)  
+	public String UpdateEmployee( @RequestBody Employee employee)  
 	
 	{
 		employeeService.saveEmployee(employee);
