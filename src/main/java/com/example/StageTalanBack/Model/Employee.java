@@ -1,12 +1,8 @@
 package com.example.StageTalanBack.Model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.Set;
 
+import javax.persistence.*;
 @Entity
 @Table(name = "employees")
 public class Employee {
@@ -29,6 +25,13 @@ public class Employee {
 
     @Column(name = "numPasseport")
 	private String numPasseport;
+
+	@ManyToMany
+		@JoinTable(
+		name = "demande_employee", 
+		joinColumns = @JoinColumn(name = "employee_id"), 
+		inverseJoinColumns = @JoinColumn(name = "Demande_id"))
+		Set<Demande> EmployeeDemande;
 	
 	public Employee(String firstName, String lastName, String emailId, String cin, String numPasseport) {
         super();

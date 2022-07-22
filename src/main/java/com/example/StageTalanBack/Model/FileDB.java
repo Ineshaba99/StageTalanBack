@@ -1,11 +1,11 @@
 package com.example.StageTalanBack.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.Table;
+import javax.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "files")
 public class FileDB {
@@ -19,6 +19,11 @@ public class FileDB {
   private byte[] data;
   public FileDB() {
   }
+
+  @ManyToOne
+  @JoinColumn(name="demande_id", nullable=false)
+  private Demande demande;
+
   public FileDB(String name, String type, byte[] data) {
     this.name = name;
     this.type = type;
