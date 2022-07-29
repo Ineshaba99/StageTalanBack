@@ -66,7 +66,6 @@ public class DemandeController {
 	/**
 	 * @param id
 	 * @return
-	 * 
 	 */
 	@DeleteMapping("/demandes/{id}")
 	public ResponseEntity<Map<String, Boolean>> deleteDemande(@PathVariable Long id){
