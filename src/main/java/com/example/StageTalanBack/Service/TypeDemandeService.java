@@ -8,13 +8,13 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.StageTalanBack.Model.TypeDemande;
 import com.example.StageTalanBack.Repository.TypeDemandeRepository;
 
+
 @Service
 @Transactional
 public class TypeDemandeService  {
 @Autowired 
   TypeDemandeRepository typeDemandeRepository;
 	
-
 	public List<TypeDemande>ListTypeDemande(){
 		
 		return typeDemandeRepository.findAll();
