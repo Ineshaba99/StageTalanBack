@@ -41,7 +41,7 @@ public class DemandeController {
 	// create demande rest api
 	@PostMapping("/demande")
 	public Demande creerDemande( @RequestBody Demande demande)
-	{
+	{   System.out.println(demande.toString());
 		demandeService.saveDemande(demande);
 		return demande;
 	}

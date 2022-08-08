@@ -47,6 +47,7 @@ public class Employee {
         this.cin = cin;
         this.numPasseport = numPasseport;
     }
+	public Employee() {}
 
     public void setCin(String cin) {
         this.cin = cin;
@@ -64,10 +65,8 @@ public class Employee {
         return numPasseport;
     }
 
-    public Employee() {
-		
-	}
-	
+   
+
 	public Employee(String firstName, String lastName, String emailId) {
 		super();
 		this.firstName = firstName;

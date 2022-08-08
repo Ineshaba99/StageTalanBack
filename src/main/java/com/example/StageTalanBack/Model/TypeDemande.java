@@ -25,9 +25,29 @@ public class TypeDemande {
     @Column(name = "nomTypeDemande")
 	private String nomTypeDemande; 
 	
-	  @OneToMany(mappedBy = "id", fetch = FetchType.LAZY, cascade =
-	  CascadeType.ALL) private Set<Demande> demandes;
+
+	public String getNomTypeDemande() {
+		return nomTypeDemande;
+	}
+	
+
+	public long getId() {
+		return id;
+	}
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+	public void setNomTypeDemande(String nomTypeDemande) {
+		this.nomTypeDemande = nomTypeDemande;
+	}
+
+	public TypeDemande() {}
 	 
+	  
    
     
 }
