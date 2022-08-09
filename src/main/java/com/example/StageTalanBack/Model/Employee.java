@@ -1,4 +1,5 @@
 package com.example.StageTalanBack.Model;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -7,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "employees")
@@ -31,14 +34,30 @@ public class Employee {
     @Column(name = "numPasseport")
 	private String numPasseport;
     
-    @ManyToMany
+  /**  @ManyToMany
 	@JoinTable(
 	name = "demande_employee", 
-	joinColumns = @JoinColumn(name = "employee_id"), 
-	inverseJoinColumns = @JoinColumn(name = "Demande_id"))
-	Set<Demande> EmployeeDemande;
-
+	joinColumns = @JoinColumn(name = "employee_id" , referencedColumnName= "id",  table="employees"), 
+	inverseJoinColumns = @JoinColumn(name = "demande_id", referencedColumnName= "id" , table="demande"))
+	List<Demande> EmployeeDemande; 
 	
+	**/
+
+    @ManyToMany(mappedBy = "employeeList")
+    @JsonIgnore
+    List<Demande> EmployeeDemande;
+	
+	public Employee(long id, String firstName, String lastName, String emailId, String cin, String numPasseport,
+			List<Demande> employeeDemande) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.emailId = emailId;
+		this.cin = cin;
+		this.numPasseport = numPasseport;
+		EmployeeDemande = employeeDemande;
+	}
 	public Employee(String firstName, String lastName, String emailId, String cin, String numPasseport) {
         super();
         this.firstName = firstName;
@@ -97,4 +116,13 @@ public class Employee {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
+	
+	public List<Demande> getEmployeeDemande() {
+		return EmployeeDemande;
+	}
+	
+	public void setEmployeeDemande(List<Demande> employeeDemande) {
+		EmployeeDemande = employeeDemande;
+	}
+	
 }
