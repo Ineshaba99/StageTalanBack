@@ -12,6 +12,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
@@ -31,6 +32,7 @@ public class Demande {
 	joinColumns = @JoinColumn(name = "demande_id" , referencedColumnName= "id",  table="demande"), 
 	inverseJoinColumns = @JoinColumn(name = "employee_id", referencedColumnName= "id" , table="employees")) 
     @JsonIgnore
+    //@JsonIgnoreProperties("demande")
     List<Employee> employeeList; 
 	
     

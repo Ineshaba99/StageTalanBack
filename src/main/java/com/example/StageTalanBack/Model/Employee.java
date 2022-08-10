@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "employees")
@@ -45,6 +46,7 @@ public class Employee {
 
     @ManyToMany(mappedBy = "employeeList")
     @JsonIgnore
+    //@JsonIgnoreProperties("employees")
     List<Demande> EmployeeDemande;
 	
 	public Employee(long id, String firstName, String lastName, String emailId, String cin, String numPasseport,
